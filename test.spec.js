@@ -20,4 +20,21 @@ describe('Rover', () => {
       expect(actualLocation).toEqual(expectedLocation);
     });
     
+    test('should move forward when facing south', () => {
+      const location = {x:0, y:0, direction:'S'};
+      const actualLocation = rover.moveForward(location);
+      
+      const expectedLocation = {x:0, y:-1, direction:'S'};
+
+      expect(actualLocation).toEqual(expectedLocation);
+    });
+    
+    test('should move forward when facing west', () => {
+      const location = {x:0, y:0, direction:'W'};
+      const actualLocation = rover.moveForward(location);
+      
+      const expectedLocation = {x:-1, y:0, direction:'W'};
+
+      expect(actualLocation).toEqual(expectedLocation);
+    });
   });
