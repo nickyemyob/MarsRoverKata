@@ -74,4 +74,13 @@ describe('Rover', () => {
 
       expect(actualLocation).toEqual(expectedLocation);
     });
+
+    // test('should turn right and face east when facing east', () => {
+    //   const direction = {x:0, y:0, direction:'N'};
+    //   const actualDirection = rover.turnRight(direction);
+      
+    //   const expectedDirection = {x:0, y:0, direction:'E'};
+
+    //   expect(actualDirection).toEqual(expectedDirection);
+    // });
   });
