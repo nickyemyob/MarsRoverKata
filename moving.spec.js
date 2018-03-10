@@ -2,7 +2,6 @@ var rover = require('./index.js');
 
 describe('Rover', () => {
    test('should move forward when facing north', () => {
-      
       const location = {x:0, y:0, direction:'N'};
       const actualLocation = rover.moveForward(location);
       
@@ -39,7 +38,6 @@ describe('Rover', () => {
     });
 
     test('should move backward when facing north', () => {
-      
       const location = {x:0, y:0, direction:'N'};
       const actualLocation = rover.moveBackward(location);
       
@@ -74,13 +72,4 @@ describe('Rover', () => {
 
       expect(actualLocation).toEqual(expectedLocation);
     });
-
-    // test('should turn right and face east when facing east', () => {
-    //   const direction = {x:0, y:0, direction:'N'};
-    //   const actualDirection = rover.turnRight(direction);
-      
-    //   const expectedDirection = {x:0, y:0, direction:'E'};
-
-    //   expect(actualDirection).toEqual(expectedDirection);
-    // });
   });
