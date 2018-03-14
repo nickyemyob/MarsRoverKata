@@ -63,10 +63,10 @@ function backwardFacingEast(x, y, direction) {
     return { x: x - 1, y, direction };
 }
 
-function backwardFacingSouth(x, y, direction) {
-    return { x, y: y + 1, direction };
-}
-
 function backwardFacingWest(x, y, direction) {
     return { x: x + 1, y, direction };
+}
+
+function backwardFacingSouth(x, y, direction) {
+    return { x, y: y + 1, direction };
 }
