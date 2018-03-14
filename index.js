@@ -1,10 +1,3 @@
-const forward = {
-    N: ({x,y,direction}) => ({x, y:y+1, direction}),
-    E: ({x,y,direction}) => ({x:x+1, y, direction}),
-    S: ({x,y,direction}) => ({x, y:y-1, direction}),
-    W: ({x,y,direction}) => ({x:x-1, y, direction}),
-}
-
 module.exports = {
     moveForward: ({x,y,direction}) => {
         return forward[direction]({x,y,direction});
@@ -33,3 +26,26 @@ module.exports = {
     //detectAtEdgeOfWorldHorizontal({gridX, currentX})
     //detectAtEdgeOfWorldVertical({gridY, currentY})
 };
+
+const forward = {
+    N: ({x,y,direction}) => (forwardFacingNorth(x, y, direction)),
+    E: ({x,y,direction}) => (forwardFacingEast(x, y, direction)),
+    S: ({x,y,direction}) => (forwardFacingSouth(x, y, direction)),
+    W: ({x,y,direction}) => (forwardFacingWest(x, y, direction)),
+}
+
+function forwardFacingWest(x, y, direction) {
+    return { x: x - 1, y, direction };
+}
+
+function forwardFacingSouth(x, y, direction) {
+    return { x, y: y - 1, direction };
+}
+
+function forwardFacingEast(x, y, direction) {
+    return { x: x + 1, y, direction };
+}
+
+function forwardFacingNorth(x, y, direction) {
+    return { x, y: y + 1, direction };
+}
