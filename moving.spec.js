@@ -1,4 +1,4 @@
-const rover = require('./index.js');
+const rover = require('./moving.js');
 
 describe('Rover', () => {
    test('should move forward when facing north', () => {

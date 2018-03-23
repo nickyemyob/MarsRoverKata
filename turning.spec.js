@@ -1,4 +1,4 @@
-var rover = require('./index.js');
+var rover = require('./turning.js');
 
 describe('Rover', () => {
     test('should face east when turning right from facing north', () => {
