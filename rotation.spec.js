@@ -1,4 +1,4 @@
-const rover = require("./turning.js");
+const rover = require("./rotation.js");
 
 describe("Rover", () => {
 	test("should face east when turning right from facing north", () => {

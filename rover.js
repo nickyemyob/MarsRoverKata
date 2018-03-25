@@ -1,24 +1,28 @@
-const movement = require("./moving.js");
-const rotation = require("./turning.js");
+const movement = require("./movement.js");
+const rotation = require("./rotation.js");
+const command = require("./command.js");
 
 module.exports = {
 	drive: ({x,y,direction}, commands) => {
-		let destination = {x: x, y: y, direction: direction};
+		let destination = {x, y, direction};
 
 		for(let i = 0; i < commands.length; i++){
-			if(commands[i] === "f"){
+			switch (commands[i]) {
+			case command.forward:
 				destination = movement.moveForward(destination);
-			}
-			if(commands[i] === "b"){
+				break;
+			case command.backward:
 				destination = movement.moveBackward(destination);
-			}
-			if(commands[i] === "r"){
+				break;
+			case command.right:
 				destination = rotation.turnRight(destination);
-			}
-			if(commands[i] === "l"){
+				break;
+			case command.left:
 				destination = rotation.turnLeft(destination);
+				break;
 			}
 		}
+		
 		return destination;
 	}
 };
