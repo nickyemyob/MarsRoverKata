@@ -3,7 +3,7 @@ const rotation = require("./rotation.js");
 const command = require("./command.js");
 
 module.exports = {
-	drive: ({x,y,direction}, commands) => {
+	drive: ({x, y, direction}, commands) => {
 		let destination = {x, y, direction};
 
 		for(let i = 0; i < commands.length; i++){

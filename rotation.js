@@ -1,18 +1,18 @@
 module.exports = {
-	turnRight: ({x,y,direction}) => {
-		return right[direction]({x,y,direction});
+	turnRight: ({x, y, direction}) => {
+		return right[direction]({x, y});
 	},
     
-	turnLeft: ({x,y,direction}) => {
-		return left[direction]({x,y,direction});
+	turnLeft: ({x, y, direction}) => {
+		return left[direction]({x, y});
 	}
 }; 
 
 const right = {
-	N: ({x,y,direction}) => (turnRightFacingNorth(x, y, direction)),
-	E: ({x,y,direction}) => (turnRightFacingEast(x, y, direction)),
-	S: ({x,y,direction}) => (turnRightFacingSouth(x, y, direction)),
-	W: ({x,y,direction}) => (turnRightFacingWest(x, y, direction)),
+	N: ({x, y}) => (turnRightFacingNorth(x, y)),
+	E: ({x, y}) => (turnRightFacingEast(x, y)),
+	S: ({x, y}) => (turnRightFacingSouth(x, y)),
+	W: ({x, y}) => (turnRightFacingWest(x, y)),
 };
 
 function turnRightFacingNorth(x, y) {
@@ -32,10 +32,10 @@ function turnRightFacingSouth(x, y) {
 }
 
 const left = {
-	N: ({x,y,direction}) => (turnLeftFacingNorth(x, y, direction)),
-	E: ({x,y,direction}) => (turnLeftFacingEast(x, y, direction)),
-	S: ({x,y,direction}) => (turnLeftFacingSouth(x, y, direction)),
-	W: ({x,y,direction}) => (turnLeftFacingWest(x, y, direction)),
+	N: ({x, y}) => (turnLeftFacingNorth(x, y)),
+	E: ({x, y}) => (turnLeftFacingEast(x, y)),
+	S: ({x, y}) => (turnLeftFacingSouth(x, y)),
+	W: ({x, y}) => (turnLeftFacingWest(x, y)),
 };
 
 function turnLeftFacingNorth(x, y) {
