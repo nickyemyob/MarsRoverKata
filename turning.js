@@ -15,20 +15,20 @@ const right = {
 	W: ({x,y,direction}) => (turnRightFacingWest(x, y, direction)),
 };
 
-function turnRightFacingNorth(x, y, direction) {
-	return { x, y, direction:"E"};
+function turnRightFacingNorth(x, y) {
+	return {x, y, direction:"E"};
 }
 
-function turnRightFacingEast(x, y, direction) {
-	return { x, y, direction:"S"};
+function turnRightFacingEast(x, y) {
+	return {x, y, direction:"S"};
 }
 
-function turnRightFacingWest(x, y, direction) {
-	return { x, y, direction:"N"};
+function turnRightFacingWest(x, y) {
+	return {x, y, direction:"N"};
 }
 
-function turnRightFacingSouth(x, y, direction) {
-	return { x, y, direction:"W"};
+function turnRightFacingSouth(x, y) {
+	return {x, y, direction:"W"};
 }
 
 const left = {
@@ -38,18 +38,18 @@ const left = {
 	W: ({x,y,direction}) => (turnLeftFacingWest(x, y, direction)),
 };
 
-function turnLeftFacingNorth(x, y, direction) {
-	return { x, y, direction:"W"};
+function turnLeftFacingNorth(x, y) {
+	return {x, y, direction:"W"};
 }
 
-function turnLeftFacingEast(x, y, direction) {
-	return { x, y, direction:"N"};
+function turnLeftFacingEast(x, y) {
+	return {x, y, direction:"N"};
 }
 
-function turnLeftFacingWest(x, y, direction) {
-	return { x, y, direction:"S"};
+function turnLeftFacingWest(x, y) {
+	return {x, y, direction:"S"};
 }
 
-function turnLeftFacingSouth(x, y, direction) {
-	return { x, y, direction:"E"};
+function turnLeftFacingSouth(x, y) {
+	return {x, y, direction:"E"};
 }
