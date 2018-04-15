@@ -1,4 +1,5 @@
 const rover = require("./movement.js");
+const world = require("./world");
 
 describe("Rover", () => {
 	test("should move forward when facing north", () => {
@@ -29,10 +30,10 @@ describe("Rover", () => {
 	});
     
 	test("should move forward when facing west", () => {
-		const location = {x:0, y:0, direction:"W"};
+		const location = {x:1, y:0, direction:"W"};
 		const actualLocation = rover.moveForward(location);
       
-		const expectedLocation = {x:-1, y:0, direction:"W"};
+		const expectedLocation = {x:0, y:0, direction:"W"};
 
 		expect(actualLocation).toEqual(expectedLocation);
 	});
@@ -69,6 +70,15 @@ describe("Rover", () => {
 		const actualLocation = rover.moveBackward(location);
       
 		const expectedLocation = {x:1, y:0, direction:"W"};
+
+		expect(actualLocation).toEqual(expectedLocation);
+	});
+
+	test("should move to right edge of the world when at the left edge of the world and moving forward west", () => {
+		const location = {x:0, y:0, direction: "W"};
+		const actualLocation = rover.moveForward(location);
+
+		const expectedLocation = {x:world.rightEdge, y:0, direction: "W"};
 
 		expect(actualLocation).toEqual(expectedLocation);
 	});

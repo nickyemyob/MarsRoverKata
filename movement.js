@@ -1,3 +1,5 @@
+const world = require("./world");
+
 module.exports = {
 	moveForward: ({x, y, direction}) => {
 		return forward[direction]({x, y, direction});
@@ -24,7 +26,13 @@ function forwardFacingEast(x, y, direction) {
 }
 
 function forwardFacingWest(x, y, direction) {
-	return {x:x - 1, y, direction};
+	let movedWest = x - 1;
+
+	if(movedWest < world.leftEdge){
+		return {x: world.rightEdge, y, direction};
+	}
+
+	return {x: movedWest, y, direction};
 }
 
 function forwardFacingSouth(x, y, direction) {
@@ -52,5 +60,5 @@ function backwardFacingWest(x, y, direction) {
 }
 
 function backwardFacingSouth(x, y, direction) {
-return {x, y:y + 1, direction};
+	return {x, y:y + 1, direction};
 }
