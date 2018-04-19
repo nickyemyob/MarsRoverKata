@@ -22,7 +22,13 @@ function forwardFacingNorth(x, y, direction) {
 }
 
 function forwardFacingEast(x, y, direction) {
-	return {x:x + 1, y, direction};
+	let movedEast = x + 1;
+		
+	if(movedEast > world.rightEdge){
+		return {x: world.leftEdge, y, direction};
+	}
+
+	return {x: movedEast, y, direction};
 }
 
 function forwardFacingWest(x, y, direction) {

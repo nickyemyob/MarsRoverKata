@@ -82,4 +82,13 @@ describe("Rover", () => {
 
 		expect(actualLocation).toEqual(expectedLocation);
 	});
+	
+	test("should move to left edge of the world when at the right edge of the world and moving forward east", () => {
+		const location = {x:world.rightEdge, y:0, direction: "E"};
+		const actualLocation = rover.moveForward(location);
+
+		const expectedLocation = {x:world.leftEdge, y:0, direction: "E"};
+
+		expect(actualLocation).toEqual(expectedLocation);
+	});
 });
