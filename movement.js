@@ -18,7 +18,12 @@ const forward = {
 };
 
 function forwardFacingNorth(x, y, direction) {
-	return {x, y:y + 1, direction};
+	const movedNorth = y + 1;
+
+	if(movedNorth > world.topEdge){
+		return {x, y: world.bottomEdge, direction};
+	}
+	return {x, y: movedNorth, direction};
 }
 
 function forwardFacingEast(x, y, direction) {
