@@ -48,7 +48,13 @@ function forwardFacingWest(x, y, direction) {
 }
 
 function forwardFacingSouth(x, y, direction) {
-	return {x, y:y - 1, direction};
+	const movedSouth = y - 1;
+
+	if(movedSouth < world.bottomEdge){
+		return {x, y: world.topEdge, direction}
+	}
+
+	return {x, y: movedSouth, direction};
 }
 
 
