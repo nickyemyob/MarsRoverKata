@@ -118,5 +118,23 @@ describe("Rover", () => {
 
 		expect(actualLocation).toEqual(expectedLocation);
 	});
-	
+
+	test("should move to left edge of the world when at the right edge of the world and moving backward facing west", () => {
+		const location = {x:world.rightEdge, y:0, direction: "W"};
+		const actualLocation = rover.moveBackward(location);
+
+		const expectedLocation = {x:world.leftEdge, y:0, direction: "W"};
+
+		expect(actualLocation).toEqual(expectedLocation);
+	});
+
+	test("should move to bottom edge of the world when at the top edge of the world and moving backward facing south", () => {
+		const location = {x: 0, y: world.topEdge, direction: "S"};
+		const actualLocation = rover.moveBackward(location);
+
+		const expectedLocation = {x: 0, y:world.bottomEdge, direction: "S"};
+
+		expect(actualLocation).toEqual(expectedLocation);
+	});
+
 });

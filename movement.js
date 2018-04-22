@@ -70,16 +70,26 @@ function backwardFacingNorth(x, y, direction) {
 }
 
 function backwardFacingEast(x, y, direction) {
-	if (x - 1 < world.leftEdge){
+	const movedWest = x -1;
+	if (movedWest < world.leftEdge){
 		return {x: world.rightEdge, y, direction};
 	}
-	return {x:x - 1, y, direction};
+	return {x: movedWest, y, direction};
 }
 
 function backwardFacingWest(x, y, direction) {
-	return {x:x + 1, y, direction};
+	const movedEast = x + 1;
+	if (movedEast > world.rightEdge){
+		return {x: world.leftEdge, y, direction};
+	}
+
+	return {x:movedEast, y, direction};
 }
 
 function backwardFacingSouth(x, y, direction) {
-	return {x, y:y + 1, direction};
+	const moveNorth = y + 1;
+	if(moveNorth > world.topEdge){
+		return {x, y: world.bottomEdge, direction};
+	}
+	return {x, y: moveNorth, direction};
 }
