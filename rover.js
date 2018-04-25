@@ -7,28 +7,26 @@ module.exports = {
 		let currentLocation = {x, y, direction};
 
 		for (let i = 0; i < commands.length; i++) {
-			switch (commands[i]) {
-			case command.forward:
-				let nextLocation = movement.moveForward(currentLocation);
-
-				for(let j = 0; j < obstacles.length; j++){
+			if (commands[i] === command.forward) {
+				for (let j = 0; j < obstacles.length; j++) {
+					let nextLocation = movement.moveForward(currentLocation);
 					console.log(obstacles.length);
-					if(currentLocation.x === obstacles[j].x && currentLocation.y === obstacles[j].y) {
-						return {...nextLocation, obstacleLocated: {x: j.x, y: j.y}};
+					console.log("x"+obstacles[j].x);
+					console.log("y"+obstacles[j].y);
+					console.log("curx"+currentLocation.x);
+					console.log("cury"+currentLocation.y);
+					if (currentLocation.x === obstacles[j].x && currentLocation.y === obstacles[j].y) {
+						return {...nextLocation, obstacleLocated: {x: obstacles[j].x, y: obstacles[j].y}};
 					} else {
 						currentLocation = nextLocation;
 					}
 				}
-				break;
-			case command.backward:
+			} else if (commands[i] === command.backward) {
 				currentLocation = movement.moveBackward(currentLocation);
-				break;
-			case command.right:
+			} else if (commands[i] === command.right) {
 				currentLocation = rotation.turnRight(currentLocation);
-				break;
-			case command.left:
+			} else if (commands[i] === command.left) {
 				currentLocation = rotation.turnLeft(currentLocation);
-				break;
 			}
 		}
 

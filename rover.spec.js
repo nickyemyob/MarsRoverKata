@@ -24,13 +24,13 @@ describe("Rover", () => {
 	});
 
 	test("should return the location of the rover and the location of the obstacle when encountering an obstacle", () => {
-		const obstacles = [{x: 0, y: 2}];
+		const obstacles = [{x: 0, y: 1}];
 
 		const initialPosition = {x:0, y:0, direction:"N"};
 		const commands = ["f","f","f"];
 		const roverResult = rover.drive(initialPosition, commands, obstacles);
 
-		const expectedRoverResult = {x:0, y:1, direction:"N", obstacleLocated: {x:0, y:2}};
+		const expectedRoverResult = {x:0, y:0, direction:"N", obstacleLocated: {x:0, y:1}};
 
 		expect(roverResult).toEqual(expectedRoverResult);
 	});
