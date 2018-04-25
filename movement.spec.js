@@ -39,10 +39,10 @@ describe("Rover", () => {
 	});
 
 	test("should move backward when facing north", () => {
-		const location = {x:0, y:0, direction:"N"};
+		const location = {x:0, y:1, direction:"N"};
 		const actualLocation = rover.moveBackward(location);
       
-		const expectedLocation = {x:0, y:-1, direction:"N"};
+		const expectedLocation = {x:0, y:0, direction:"N"};
 
 		expect(actualLocation).toEqual(expectedLocation);
 	});
@@ -133,6 +133,15 @@ describe("Rover", () => {
 		const actualLocation = rover.moveBackward(location);
 
 		const expectedLocation = {x: 0, y:world.bottomEdge, direction: "S"};
+
+		expect(actualLocation).toEqual(expectedLocation);
+	});
+
+	test("should move to top edge of the world when at the bottom edge of the world and moving backward facing north", () => {
+		const location = {x: 0, y: world.bottomEdge, direction: "N"};
+		const actualLocation = rover.moveBackward(location);
+
+		const expectedLocation = {x: 0, y:world.topEdge, direction: "N"};
 
 		expect(actualLocation).toEqual(expectedLocation);
 	});

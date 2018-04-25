@@ -66,7 +66,12 @@ const backward = {
 };
 
 function backwardFacingNorth(x, y, direction) {
-	return {x, y:y - 1, direction};
+	const moveSouth = y - 1;
+	if(moveSouth < world.bottomEdge){
+		return {x, y: world.topEdge, direction};
+	}
+
+	return {x, y: moveSouth, direction};
 }
 
 function backwardFacingEast(x, y, direction) {
