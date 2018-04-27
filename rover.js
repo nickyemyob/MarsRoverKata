@@ -5,18 +5,22 @@ const command = require("./command.js");
 module.exports = {
 	drive: ({x, y, direction}, commands, obstacles) => {
 		let currentLocation = {x, y, direction};
+		let obstacles1 = obstacles;
 
 		for (let i = 0; i < commands.length; i++) {
 			if (commands[i] === command.forward) {
-				for (let j = 0; j < obstacles.length; j++) {
-					let nextLocation = movement.moveForward(currentLocation);
-					console.log(obstacles.length);
-					console.log("x"+obstacles[j].x);
-					console.log("y"+obstacles[j].y);
+				for (let j = 0; j < obstacles1.length; j++) {
+					console.log(obstacles1.length);
+					console.log("x"+obstacles1[j].x);
+					console.log("y"+obstacles1[j].y);
 					console.log("curx"+currentLocation.x);
 					console.log("cury"+currentLocation.y);
-					if (currentLocation.x === obstacles[j].x && currentLocation.y === obstacles[j].y) {
-						return {...nextLocation, obstacleLocated: {x: obstacles[j].x, y: obstacles[j].y}};
+					console.log("obs"+obstacles1);
+					
+					let nextLocation = movement.moveForward(currentLocation);
+
+					if (nextLocation.x === obstacles1[j].x && nextLocation.y === obstacles1[j].y) {
+						return {...currentLocation, obstacleLocated: {x: obstacles1[j].x, y: obstacles1[j].y}};
 					} else {
 						currentLocation = nextLocation;
 					}
