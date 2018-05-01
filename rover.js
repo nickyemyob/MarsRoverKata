@@ -5,32 +5,41 @@ const command = require("./command.js");
 module.exports = {
 	drive: ({x, y, direction}, commands, obstacles) => {
 		let currentLocation = {x, y, direction};
-		let obstacles1 = obstacles;
 
 		for (let i = 0; i < commands.length; i++) {
-			if (commands[i] === command.forward) {
-				for (let j = 0; j < obstacles1.length; j++) {
-					console.log(obstacles1.length);
-					console.log("x"+obstacles1[j].x);
-					console.log("y"+obstacles1[j].y);
-					console.log("curx"+currentLocation.x);
-					console.log("cury"+currentLocation.y);
-					console.log("obs"+obstacles1);
-					
-					let nextLocation = movement.moveForward(currentLocation);
+			let nextLocation = null;
+			
+			switch (commands[i]){
+			case command.forward:
+				nextLocation = movement.moveForward(currentLocation);
 
-					if (nextLocation.x === obstacles1[j].x && nextLocation.y === obstacles1[j].y) {
-						return {...currentLocation, obstacleLocated: {x: obstacles1[j].x, y: obstacles1[j].y}};
-					} else {
-						currentLocation = nextLocation;
+				for (let j = 0; j < obstacles.length; j++) {
+					if (nextLocation.x === obstacles[j].x && nextLocation.y === obstacles[j].y) {
+						nextLocation = {...currentLocation, obstacleLocated: {x: obstacles[j].x, y: obstacles[j].y}};
+						break;
 					}
 				}
-			} else if (commands[i] === command.backward) {
-				currentLocation = movement.moveBackward(currentLocation);
-			} else if (commands[i] === command.right) {
+				currentLocation = nextLocation;
+				break;
+
+			case command.backward:
+				nextLocation = movement.moveBackward(currentLocation);
+
+				for (let j = 0; j < obstacles.length; j++) {
+					if (nextLocation.x === obstacles[j].x && nextLocation.y === obstacles[j].y) {
+						nextLocation = {...currentLocation, obstacleLocated: {x: obstacles[j].x, y: obstacles[j].y}};
+						break;
+					}
+				}
+				currentLocation = nextLocation;
+				break;
+
+			case command.right:
 				currentLocation = rotation.turnRight(currentLocation);
-			} else if (commands[i] === command.left) {
+				break;
+			case command.left:
 				currentLocation = rotation.turnLeft(currentLocation);
+				break;
 			}
 		}
 
